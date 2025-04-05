@@ -6,10 +6,13 @@ phases:
       dotnet: 6.0
   build:
     commands:
-      - dotnet
+      - dotnet publish -c Release --self-contained false --runtime linux-x64 -o ./publish_output
 artifacts:
   files:
-    - scripts/*
     - appspec.yml
-    - bin/Release/netcoreapp6/linux-x64/*
-  discard-paths: yes 
+    - scripts/**/*
+    - **/*.dll
+    - **/*.so
+    - **/*.json
+  base-directory: 'publish_output'
+  discard-paths: no

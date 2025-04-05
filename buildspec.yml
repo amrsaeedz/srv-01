@@ -6,7 +6,7 @@ phases:
       dotnet: 6.0
   build:
     commands:
-      - dotnet publish -c Release --self-contained=false
+      - dotnet
 artifacts:
   files:
     - scripts/*

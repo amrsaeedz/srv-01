@@ -8,7 +8,7 @@ env:
 phases:
   install:
     runtime-versions:
-      dotnet: 6.0  # Matches your target framework
+      dotnet: 6.0
     commands:
       - mkdir -p ${DOTNET_CLI_HOME}
       - mkdir -p ${HOME}
@@ -25,10 +25,9 @@ phases:
       - echo "Building application..."
       - dotnet build -c Release --no-restore --runtime linux-x64
       - echo "Publishing application..."
-      - dotnet publish -c Release --runtime linux-x64 -o ./publish_output
+      - dotnet publish -c Release --runtime linux-x64
 
 artifacts:
   files:
     - '**/*'
-  base-directory: 'publish_output'
-  discard-paths: no
+  discard-paths: yes

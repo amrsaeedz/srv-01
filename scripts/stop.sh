@@ -1,1 +1,1 @@
-systemctl stop srv01
+sudo systemctl stop srv01

@@ -4,15 +4,18 @@ phases:
   install:
     runtime-versions:
       dotnet: 6.0
+  pre_build:
+    commands:
+      - echo "Restoring NuGet packages..."
+      - dotnet restore
   build:
     commands:
+      - echo "Building application..."
+      - dotnet build -c Release
+      - echo "Publishing application..."
       - dotnet publish -c Release --self-contained false --runtime linux-x64 -o ./publish_output
 artifacts:
   files:
-    - appspec.yml
-    - scripts/**/*
-    - **/*.dll
-    - **/*.so
-    - **/*.json
+    - '**/*'
   base-directory: 'publish_output'
   discard-paths: no

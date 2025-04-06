@@ -25,9 +25,10 @@ phases:
       - echo "Building application..."
       - dotnet build -c Release --no-restore --runtime linux-x64
       - echo "Publishing application..."
-      - dotnet publish -c Release --runtime linux-x64
+      - dotnet publish -c Release --runtime linux-x64 -o ./publish_output
 
 artifacts:
   files:
     - '**/*'
-  discard-paths: yes
+  base-directory: 'publish_output'
+  discard-paths: no

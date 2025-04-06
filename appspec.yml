@@ -1,18 +1,33 @@
 version: 0.0
 os: linux
 files:
-  source: /
-  destination: /home/ubuntu/srv01
+  - source: /
+    destination: /home/ubuntu/srv01
+    overwrite: true
+permissions:
+  - object: /home/ubuntu/srv01
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
 hooks:
   BeforeInstall:
-    - location: before_install.sh
-    - timeout: 30
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: root
   AfterInstall:
-    - location: after_install.sh
-    - timeout: 30
+    - location: scripts/after_install.sh
+      timeout: 300
+      runas: ubuntu
   ApplicationStart:
-    - location: start.sh
-    - timeout: 30
-  ApplicationStop:  
-    - location: stop.sh
-    - timeout: 30
+    - location: scripts/start.sh
+      timeout: 300
+      runas: ubuntu
+  ApplicationStop:
+    - location: scripts/stop.sh
+      timeout: 300
+      runas: ubuntu
+  ValidateService:
+    - location: scripts/validate.sh
+      timeout: 300
+      runas: ubuntu

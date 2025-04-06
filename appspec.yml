@@ -4,12 +4,6 @@ files:
   - source: /
     destination: /home/ubuntu/srv01
     overwrite: true
-permissions:
-  - object: /home/ubuntu/srv01
-    pattern: "**"
-    owner: ubuntu
-    group: ubuntu
-    mode: 755
 hooks:
   BeforeInstall:
     - location: before_install.sh

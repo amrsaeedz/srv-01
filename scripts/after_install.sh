@@ -12,4 +12,4 @@ Environment=DOTNET_CLI_HOME=/temp
 WantedBy=multi-user.target
 EOL
 
-sudo systemctl daemon-reload
+systemctl daemon-reload

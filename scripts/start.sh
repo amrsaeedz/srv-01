@@ -1,1 +1,1 @@
-sudo systemctl start srv01
+systemctl start srv01

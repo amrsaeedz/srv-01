@@ -13,9 +13,10 @@ phases:
       - echo "Building application..."
       - dotnet build -c Release
       - echo "Publishing application..."
-      - dotnet publish -c Release --self-contained false --runtime linux-x64 -o ./publish_output
+      - dotnet publish -c Release --self-contained false --runtime linux-x64
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'publish_output'
-  discard-paths: no
+    - scripts/*
+    - appspec.yml
+    - bin/Release/netcoreapp6/linux-x64/*
+  discard-paths: yes 

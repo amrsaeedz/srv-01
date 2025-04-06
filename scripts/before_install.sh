@@ -1,1 +1,0 @@
-echo "Hello! this is before_install.sh script."
